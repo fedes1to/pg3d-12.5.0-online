@@ -1,3 +1,5 @@
+# This repository is adapted to PG3D version 12.5.0 running ARMV7 !
+
 # Android Native Mod Template
 Not everything requires a mod menu - which is why I created this mod template (but, it was also a fun project to do)! It supports hooking, patching, pattern-scanning, uses cmake to build, and much more! In short, it includes everything you need to make your own mods. In case you're wondering, for the NDK, I use the latest LTS version - which can be downloaded [here](https://github.com/android/ndk/wiki#current-lts-release). 
 
