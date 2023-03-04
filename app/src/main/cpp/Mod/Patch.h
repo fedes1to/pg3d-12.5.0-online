@@ -34,10 +34,10 @@ void Patches()
     patches.gemThreshold.Modify();
 
     // removed weps
-    patches.removedWeaponNames = MemoryPatch::createWithHex(LibraryToLoad, offsets->removedWeaponNames, "1E FF 2F E1");
-    patches.removedWeaponNames.Modify();
-    patches.removedWeaponString = MemoryPatch::createWithHex(LibraryToLoad, offsets->removedWeaponString, "1E FF 2F E1");
-    patches.removedWeaponString.Modify();
+    // patches.removedWeaponNames = MemoryPatch::createWithHex(LibraryToLoad, offsets->removedWeaponNames, "1E FF 2F E1");
+    // patches.removedWeaponNames.Modify();
+    // patches.removedWeaponString = MemoryPatch::createWithHex(LibraryToLoad, offsets->removedWeaponString, "1E FF 2F E1");
+    // patches.removedWeaponString.Modify();
 
     // polygon enable
     patches.polygonEnabled = MemoryPatch::createWithHex(LibraryToLoad, offsets->polygonEnabled, "01 00 A0 E3 1E FF 2F E1");
