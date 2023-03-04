@@ -1,44 +1,47 @@
 #ifndef PATCH_H
 #define PATCH_H
 
-struct Patches
+struct Patches // you'll have to define here the patches
 {
-    MemoryPatch health, radar;
+    MemoryPatch cheatDetectedBanner, clearProgress, showClearProgress, awakeCheat, updateCheat, get_cheaterConfig, set_cheaterConfig,
+    checkSig, coinThreshold, gemThreshold, removedWeaponNames, removedWeaponString, polygonEnabled
 };
 
 Patches patches;
 
 void Patches()
 {
-    #if defined(__ARM_ARCH_7A__)
+    // antiban
+    patches.cheatDetectedBanner = MemoryPatch::createWithHex(LibraryToLoad, offsets->cheatDetectedBanner, "1E FF 2F E1");
+    patches.cheatDetectedBanner.Modify();
+    patches.clearProgress = MemoryPatch::createWithHex(LibraryToLoad, offsets->clearProgress, "1E FF 2F E1");
+    patches.clearProgress.Modify();
+    patches.showClearProgress = MemoryPatch::createWithHex(LibraryToLoad, offsets->showClearProgress, "1E FF 2F E1");
+    patches.showClearProgress.Modify();
+    patches.awakeCheat = MemoryPatch::createWithHex(LibraryToLoad, offsets->awakeCheat, "1E FF 2F E1");
+    patches.awakeCheat.Modify();
+    patches.updateCheat = MemoryPatch::createWithHex(LibraryToLoad, offsets->updateCheat, "1E FF 2F E1");
+    patches.updateCheat.Modify();
+    patches.get_cheaterConfig = MemoryPatch::createWithHex(LibraryToLoad, offsets->get_cheaterConfig, "1E FF 2F E1");
+    patches.get_cheaterConfig.Modify();
+    patches.set_cheaterConfig = MemoryPatch::createWithHex(LibraryToLoad, offsets->set_cheaterConfig, "1E FF 2F E1");
+    patches.set_cheaterConfig.Modify();
+    patches.checkSig = MemoryPatch::createWithHex(LibraryToLoad, offsets->checkSig, "1E FF 2F E1");
+    patches.checkSig.Modify();
+    patches.coinThreshold = MemoryPatch::createWithHex(LibraryToLoad, offsets->coinThreshold, "1E FF 2F E1");
+    patches.coinThreshold.Modify();
+    patches.gemThreshold = MemoryPatch::createWithHex(LibraryToLoad, offsets->gemThreshold, "1E FF 2F E1");
+    patches.gemThreshold.Modify();
 
-        patches.health = MemoryPatch::createWithHex(LibraryToLoad, offsets->isPlayerHealth, "C8 01 44 E3 1E FF 2F E1"); // 25.0f
-        patches.health.Modify();
+    // removed weps
+    patches.removedWeaponNames = MemoryPatch::createWithHex(LibraryToLoad, offsets->removedWeaponNames, "1E FF 2F E1");
+    patches.removedWeaponNames.Modify();
+    patches.removedWeaponString = MemoryPatch::createWithHex(LibraryToLoad, offsets->removedWeaponString, "1E FF 2F E1");
+    patches.removedWeaponString.Modify();
 
-        /* movt r0, #0x41C8
-         * bx lr */
-
-        patches.radar = MemoryPatch::createWithHex(LibraryToLoad, offsets->isRadar, "01 00 A0 E3 1E FF 2F E1"); // true
-        patches.radar.Modify();
-
-        /* mov r0, #1
-         * bx lr */
-
-    #elif defined(__aarch64__)
-
-        patches.health = MemoryPatch::createWithHex(LibraryToLoad, offsets->isPlayerHealth, "00 30 27 1E C0 03 5F D6"); // 25.0f
-        patches.health.Modify();
-
-        /* fmov s0, #25.00000000
-         * ret */
-
-        patches.radar = MemoryPatch::createWithHex(LibraryToLoad, offsets->isRadar, "20 00 80 D2 C0 03 5F D6"); // true
-        patches.radar.Modify();
-
-        /* mov x0, #1
-         * ret */
-
-    #endif
+    // polygon enable
+    patches.polygonEnabled = MemoryPatch::createWithHex(LibraryToLoad, offsets->polygonEnabled, "01 00 A0 E3 1E FF 2F E1");
+    patches.polygonEnabled.Modify();
 }
 
 #endif

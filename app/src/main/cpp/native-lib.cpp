@@ -6,6 +6,7 @@
 #include <dlfcn.h>
 #include <vector>
 
+#include "Engine/Unity.h"
 #include "Engine/Vector2.h"
 #include "Engine/Vector3.h"
 #include "Engine/Quaternion.h"
