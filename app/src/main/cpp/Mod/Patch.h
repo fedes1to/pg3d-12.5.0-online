@@ -4,7 +4,7 @@
 struct Patches // you'll have to define here the patches
 {
     MemoryPatch cheatDetectedBanner, clearProgress, showClearProgress, awakeCheat, updateCheat, get_cheaterConfig, set_cheaterConfig,
-    checkSig, coinThreshold, gemThreshold, removedWeaponNames, removedWeaponString, polygonEnabled
+    checkSig, coinThreshold, gemThreshold, removedWeaponNames, removedWeaponString, polygonEnabled;
 };
 
 Patches patches;
