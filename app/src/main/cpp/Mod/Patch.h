@@ -4,7 +4,7 @@
 struct Patches // you'll have to define here the patches
 {
     MemoryPatch cheatDetectedBanner, clearProgress, showClearProgress, awakeCheat, updateCheat, get_cheaterConfig, set_cheaterConfig,
-    checkSig, coinThreshold, gemThreshold, removedWeaponNames, removedWeaponString, polygonEnabled;
+    checkSig, coinThreshold, gemThreshold, removedWeaponNames, removedWeaponString, polygonEnabled, IsDeveloperBuild;
 };
 
 Patches patches;
@@ -42,6 +42,10 @@ void Patches()
     // polygon enable
     patches.polygonEnabled = MemoryPatch::createWithHex(LibraryToLoad, offsets->polygonEnabled, "01 00 A0 E3 1E FF 2F E1");
     patches.polygonEnabled.Modify();
+
+    // is developer build (*works as antiban lmao)
+    patches.IsDeveloperBuild = MemoryPatch::createWithHex(LibraryToLoad, offsets->IsDeveloperBuild, "01 00 A0 E3 1E FF 2F E1");
+    patches.IsDeveloperBuild.Modify();
 }
 
 #endif

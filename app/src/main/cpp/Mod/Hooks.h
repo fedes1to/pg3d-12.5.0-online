@@ -35,28 +35,29 @@ void PlayerUpdate (void *instance)
 }
 */
 
-void (*old_UIRoot)(void *instance);
-void UIRoot (void *instance)
-{
-    if(instance != nullptr)
-    {
-        // set cloud here
-        useCloud(ServerSettings(), CreateIl2cppString("1f1bb08d-1c91-443e-b7d2-e4300850c1cf"), 0);
+void (*old_InternetChecker)(void *instance);
+void InternetChecker (void *instance) {
+    if(instance != nullptr) {
+        LOGDEBUG("Changing Currency");
         setInt(CreateIl2cppString("currentLevel1"), 0, false);
-        setInt(CreateIl2cppString("currentLevel70"), 1, true);
-        setInt(CreateIl2cppString("currentLevel"), 70, true);
-        addCoins(9999, true, 0);
-        addGems(9999, true, 0);
-        addTickets(9999, true, 0);
-        addEventCurrency(9999, true, 0);
+        setInt(CreateIl2cppString("currentLevel70"), 1, false);
+        setInt(CreateIl2cppString("currentLevel"), 70, false);
+        setInt(CreateIl2cppString("Coins"), 13371337, false);
+        setInt(CreateIl2cppString("GemsCurrency"), 69420, false);
     }
-    return old_UIRoot(instance);
+    return old_InternetChecker(instance);
+}
+
+monoString* (*old_SelectPhotonAppId)(void* HiddenSettings);
+monoString* SelectPhotonAppId (void* HiddenSettings) {
+    return CreateIl2cppString("1f1bb08d-1c91-443e-b7d2-e4300850c1cf");
 }
 
 void Hooks()
 {
     // ARMPatch::hook((void *) getAbsoluteAddress(LibraryToLoad, offsets->isPlayerUpdate), (void *) &PlayerUpdate, (void **) &old_PlayerUpdate);
-    ARMPatch::hook((void *) getAbsoluteAddress(LibraryToLoad, offsets->UIRoot), (void *) &UIRoot, (void **) &old_UIRoot);
+    ARMPatch::hook((void *) getAbsoluteAddress(LibraryToLoad, offsets->SelectPhotonAppId), (void *) &SelectPhotonAppId, (void **) &old_SelectPhotonAppId);
+    ARMPatch::hook((void *) getAbsoluteAddress(LibraryToLoad, offsets->InternetChecker), (void *) &InternetChecker, (void **) &old_InternetChecker);
 }
 
 #endif

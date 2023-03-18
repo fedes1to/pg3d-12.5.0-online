@@ -11,7 +11,7 @@ enum LogType
     ERROR = 6
 };
 
-#define TAG "Polar"
+#define TAG "1250Native"
 
 #define LOGDEBUG(...) ((void)__android_log_print(DEBUG, TAG, __VA_ARGS__))
 #define LOGINFO(...) ((void)__android_log_print(INFO,  TAG, __VA_ARGS__))

@@ -30,16 +30,14 @@ struct Offsets
     DWORD addGems = 0xB01F7C;
     DWORD addTickets = 0xB018D8;
     DWORD addEventCurrency = 0xB01AEC;
-    DWORD addExperience = 0x16C81C4;
-    DWORD expControllerAwake = 0x16C7C94;
     DWORD setInt = 0xCA07C0;
 
     // misc
     DWORD polygonEnabled = 0xA8DF54;
-    DWORD ServerSettings = 0xC7BAD8 + 0x10;
-    DWORD useCloud = 0x8FF47C;
-    DWORD UIRoot = 0x131D090;
-
+    DWORD SetApp = 0x71DCEC;
+    DWORD InternetChecker = 0x188716C;
+    DWORD SelectPhotonAppId = 0xCD8798;
+    DWORD IsDeveloperBuild = 0x12A4C8C;
 };
 
 Offsets *offsets;

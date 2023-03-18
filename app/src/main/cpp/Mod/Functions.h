@@ -13,15 +13,7 @@ void (*addCoins)(int count, bool needIndication, int accrualType);
 void (*addGems)(int count, bool needIndication, int accrualType);
 void (*addEventCurrency)(int count, bool needIndication, int accrualType);
 void (*addTickets)(int count, bool needIndication, int accrualType);
-void (*addExperience)(void* instance, int count);
-void (*useCloud)(void* instance, monoString* appID, int count);
 void (*setInt)(monoString* key, int val, bool directWriteForCurrencyMigration);
-
-void* ServerSettings()
-{
-    static void*(*ServerSettings)() = (void*(*)())(getAbsoluteAddress(LibraryToLoad, offsets->ServerSettings));
-    return ServerSettings();
-}
 
 void Functions() // pointers **
 {
@@ -30,8 +22,6 @@ void Functions() // pointers **
     addGems = (void(*)(int, bool, int)) (getAbsoluteAddress(LibraryToLoad, offsets->addGems));
     addEventCurrency = (void(*)(int, bool, int)) (getAbsoluteAddress(LibraryToLoad, offsets->addEventCurrency));
     addTickets = (void(*)(int, bool, int)) (getAbsoluteAddress(LibraryToLoad, offsets->addTickets));
-    addExperience = (void(*)(void*, int)) (getAbsoluteAddress(LibraryToLoad, offsets->addExperience));
-    useCloud = (void(*)(void*, monoString*, int)) (getAbsoluteAddress(LibraryToLoad, offsets->useCloud));
     setInt = (void(*)(monoString*, int, bool)) (getAbsoluteAddress(LibraryToLoad, offsets->setInt));
 }
 
