@@ -32,11 +32,13 @@ struct Offsets
     DWORD addEventCurrency = 0xB01AEC;
     DWORD addExperience = 0x16C81C4;
     DWORD expControllerAwake = 0x16C7C94;
+    DWORD setInt = 0xCA07C0;
 
     // misc
     DWORD polygonEnabled = 0xA8DF54;
-    DWORD ServerSettings = 0x8FF324;
+    DWORD ServerSettings = 0xC7BAD8 + 0x10;
     DWORD useCloud = 0x8FF47C;
+    DWORD UIRoot = 0x131D090;
 
 };
 
